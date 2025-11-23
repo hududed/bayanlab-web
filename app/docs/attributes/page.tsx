@@ -199,6 +199,143 @@ export default function AttributesPage() {
         </div>
       </section>
 
+      {/* Market Attributes */}
+      <section id="market" className="space-y-6 scroll-mt-20">
+        <h2 className="text-xl font-semibold">Halal Market</h2>
+        <p className="text-muted-foreground">
+          Fields returned by the <code className="rounded bg-muted px-1">/v1/halal-markets</code> endpoint.
+        </p>
+
+        <div className="rounded-lg border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-3 text-left font-medium">Attribute</th>
+                <th className="p-3 text-left font-medium">Type</th>
+                <th className="p-3 text-left font-medium">Required</th>
+                <th className="p-3 text-left font-medium">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="p-3"><code>market_id</code></td>
+                <td className="p-3">UUID</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Unique identifier</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>name</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Business name</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>category</code></td>
+                <td className="p-3">enum</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Market type: grocery, butcher, wholesale</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.street</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Street address</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.city</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">City name</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.state</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">State code (e.g., &quot;CO&quot;)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.zip_code</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">ZIP code</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>latitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS latitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>longitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS longitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>phone</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Contact phone (full access only)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>website</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Website URL (full access only)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>hours_raw</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Operating hours (full access only)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>google_rating</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Google Maps rating (1.0-5.0)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>halal_status</code></td>
+                <td className="p-3">enum</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">validated, likely_halal, or unverified</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>has_butcher</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">In-house butcher counter</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>has_deli</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Prepared foods/deli counter</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>sells_turkey</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Sells halal turkey (seasonal)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>source</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Data source</td>
+              </tr>
+              <tr>
+                <td className="p-3"><code>updated_at</code></td>
+                <td className="p-3">ISO8601</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Last update timestamp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* Business Attributes */}
       <section id="business" className="space-y-6 scroll-mt-20">
         <h2 className="text-xl font-semibold">Muslim-Owned Business</h2>
