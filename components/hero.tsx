@@ -14,7 +14,7 @@ export function Hero() {
         </p>
         <div className="flex gap-4 mt-4">
           <Button size="lg" asChild>
-            <Link href="/explore">Explore Data</Link>
+            <Link href="/directory/co">Explore Data</Link>
           </Button>
           <Button size="lg" variant="outline" asChild>
             <Link href="/docs">View API Docs</Link>

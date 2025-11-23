@@ -12,7 +12,7 @@ export function Header() {
         </div>
         <nav className="flex flex-1 items-center justify-end space-x-2">
           <Button variant="ghost" asChild>
-            <Link href="/explore">Explore</Link>
+            <Link href="/directory/co">Directory</Link>
           </Button>
           <Button variant="ghost" asChild>
             <Link href="/docs">Docs</Link>

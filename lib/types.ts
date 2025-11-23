@@ -45,6 +45,67 @@ export interface EateryParams {
   offset?: number;
 }
 
+// Halal Markets
+export interface HalalMarket {
+  market_id: string;
+  name: string;
+  category: string | null;
+  address: {
+    street: string | null;
+    city: string;
+    state: string;
+    zip_code: string | null;
+  };
+  latitude: number | null;
+  longitude: number | null;
+  phone: string | null;
+  website: string | null;
+  hours_raw: string | null;
+  google_rating: number | null;
+  halal_status: 'validated' | 'likely_halal' | 'unverified';
+  has_butcher: boolean;
+  has_deli: boolean;
+  sells_turkey: boolean;
+  source: string;
+  google_place_id: string | null;
+  updated_at: string;
+}
+
+export interface HalalMarketsResponse {
+  version: string;
+  region: string;
+  count: number;
+  items: HalalMarket[];
+}
+
+// Public Business (different structure from sync endpoint)
+export interface PublicBusiness {
+  business_id: string;
+  name: string;
+  category: string | null;
+  address: {
+    street: string | null;
+    city: string;
+    state: string;
+    zip_code: string | null;
+  };
+  latitude: number | null;
+  longitude: number | null;
+  phone: string | null;
+  whatsapp: string | null;
+  website: string | null;
+  description: string | null;
+  muslim_owned: boolean;
+  updated_at: string;
+}
+
+export interface PublicBusinessesResponse {
+  version: string;
+  region: string;
+  count: number;
+  items: PublicBusiness[];
+}
+
 // Muslim-Owned Businesses
 export interface Business {
   business_id: string;

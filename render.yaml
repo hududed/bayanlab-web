@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: bayanlab-web
+    runtime: node
+    plan: free
+    region: ohio 
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        value: https://bayanlab-web.onrender.com
