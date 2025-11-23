@@ -201,9 +201,9 @@ export default function AttributesPage() {
 
       {/* Business Attributes */}
       <section id="business" className="space-y-6 scroll-mt-20">
-        <h2 className="text-xl font-semibold">Business</h2>
+        <h2 className="text-xl font-semibold">Muslim-Owned Business</h2>
         <p className="text-muted-foreground">
-          Fields returned by the <code className="rounded bg-muted px-1">/v1/businesses/sync</code> endpoint.
+          Fields returned by the <code className="rounded bg-muted px-1">/v1/businesses</code> endpoint.
         </p>
 
         <div className="rounded-lg border">
@@ -224,64 +224,82 @@ export default function AttributesPage() {
                 <td className="p-3">Unique identifier</td>
               </tr>
               <tr className="border-b">
-                <td className="p-3"><code>business_name</code></td>
+                <td className="p-3"><code>name</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">Yes</td>
                 <td className="p-3">Business name</td>
               </tr>
               <tr className="border-b">
-                <td className="p-3"><code>business_industry</code></td>
+                <td className="p-3"><code>category</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">No</td>
                 <td className="p-3">Industry category</td>
               </tr>
               <tr className="border-b">
-                <td className="p-3"><code>business_description</code></td>
+                <td className="p-3"><code>description</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">No</td>
                 <td className="p-3">Business description</td>
               </tr>
               <tr className="border-b">
-                <td className="p-3"><code>business_website</code></td>
+                <td className="p-3"><code>address.street</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">No</td>
-                <td className="p-3">Website URL</td>
+                <td className="p-3">Street address</td>
               </tr>
               <tr className="border-b">
-                <td className="p-3"><code>business_city</code></td>
+                <td className="p-3"><code>address.city</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">Yes</td>
                 <td className="p-3">City name</td>
               </tr>
               <tr className="border-b">
-                <td className="p-3"><code>business_state</code></td>
+                <td className="p-3"><code>address.state</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">Yes</td>
-                <td className="p-3">State code</td>
+                <td className="p-3">State code (e.g., &quot;CO&quot;)</td>
               </tr>
               <tr className="border-b">
-                <td className="p-3"><code>business_phone</code></td>
+                <td className="p-3"><code>address.zip_code</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">No</td>
-                <td className="p-3">Contact phone</td>
+                <td className="p-3">ZIP code</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>latitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS latitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>longitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS longitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>phone</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Contact phone (full access only)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>whatsapp</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">WhatsApp number (full access only)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>website</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Website URL (full access only)</td>
               </tr>
               <tr className="border-b">
                 <td className="p-3"><code>muslim_owned</code></td>
                 <td className="p-3">boolean</td>
                 <td className="p-3">Yes</td>
                 <td className="p-3">Muslim ownership flag</td>
-              </tr>
-              <tr className="border-b">
-                <td className="p-3"><code>google_rating</code></td>
-                <td className="p-3">decimal</td>
-                <td className="p-3">No</td>
-                <td className="p-3">Google Maps rating</td>
-              </tr>
-              <tr className="border-b">
-                <td className="p-3"><code>status</code></td>
-                <td className="p-3">string</td>
-                <td className="p-3">Yes</td>
-                <td className="p-3">Approval status (e.g., &quot;approved&quot;)</td>
               </tr>
               <tr>
                 <td className="p-3"><code>updated_at</code></td>

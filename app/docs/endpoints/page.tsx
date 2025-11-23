@@ -116,15 +116,14 @@ export default function EndpointsPage() {
         </div>
       </section>
 
-      {/* Businesses */}
-      <section id="businesses" className="space-y-6 scroll-mt-20">
+      {/* Halal Markets */}
+      <section id="halal-markets" className="space-y-6 scroll-mt-20">
         <div className="flex items-center gap-3">
           <Badge>GET</Badge>
-          <h2 className="text-xl font-semibold">/v1/businesses/sync</h2>
-          <Badge variant="secondary">API Key Required</Badge>
+          <h2 className="text-xl font-semibold">/v1/halal-markets</h2>
         </div>
         <p className="text-muted-foreground">
-          Returns Muslim-owned businesses from the ProWasl directory.
+          Returns halal grocery stores, butchers, and meat shops for a given region.
         </p>
 
         <div className="space-y-4">
@@ -140,9 +139,24 @@ export default function EndpointsPage() {
               </thead>
               <tbody>
                 <tr className="border-b">
+                  <td className="p-3"><code>region</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">State code (default: &quot;CO&quot;)</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-3"><code>city</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">Filter by city name</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-3"><code>halal_status</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">Filter by status: validated, likely_halal, unverified</td>
+                </tr>
+                <tr className="border-b">
                   <td className="p-3"><code>limit</code></td>
                   <td className="p-3">integer</td>
-                  <td className="p-3">Max results (default: 100)</td>
+                  <td className="p-3">Max results (demo: 5, full: 500)</td>
                 </tr>
                 <tr>
                   <td className="p-3"><code>offset</code></td>
@@ -158,30 +172,120 @@ export default function EndpointsPage() {
           <h3 className="font-medium">Example</h3>
           <CodeBlock
             title="Request"
-            code={`curl -H "X-API-Key: your_api_key" \\
-  "https://api.bayanlab.com/v1/businesses/sync"`}
+            code={`curl "https://api.bayanlab.com/v1/halal-markets?region=CO"`}
           />
           <CodeBlock
             title="Response"
             language="json"
             code={`{
-  "businesses": [
+  "version": "1.0",
+  "region": "CO",
+  "count": 5,
+  "total": 13,
+  "access_tier": "demo",
+  "items": [
+    {
+      "market_id": "9312fb0a-2710-4b58-b4f4-8366ba262072",
+      "name": "Fresh Market Community Kitchen",
+      "category": "grocery",
+      "address": {
+        "street": "1500 West Littleton Boulevard",
+        "city": "Littleton",
+        "state": "CO",
+        "zip_code": "80120"
+      },
+      "google_rating": 5.0,
+      "halal_status": "validated",
+      "has_butcher": false,
+      "has_deli": false,
+      "sells_turkey": true,
+      "updated_at": "2025-11-23T00:06:12Z"
+    }
+  ]
+}`}
+          />
+        </div>
+      </section>
+
+      {/* Businesses */}
+      <section id="businesses" className="space-y-6 scroll-mt-20">
+        <div className="flex items-center gap-3">
+          <Badge>GET</Badge>
+          <h2 className="text-xl font-semibold">/v1/businesses</h2>
+        </div>
+        <p className="text-muted-foreground">
+          Returns Muslim-owned businesses from the ProWasl directory. Demo mode returns limited results with redacted contact info.
+        </p>
+
+        <div className="space-y-4">
+          <h3 className="font-medium">Parameters</h3>
+          <div className="rounded-lg border">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b bg-muted/50">
+                  <th className="p-3 text-left font-medium">Name</th>
+                  <th className="p-3 text-left font-medium">Type</th>
+                  <th className="p-3 text-left font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b">
+                  <td className="p-3"><code>region</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">State code (default: &quot;CO&quot;)</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-3"><code>city</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">Filter by city name</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-3"><code>limit</code></td>
+                  <td className="p-3">integer</td>
+                  <td className="p-3">Max results (demo: 5, full: 500)</td>
+                </tr>
+                <tr>
+                  <td className="p-3"><code>offset</code></td>
+                  <td className="p-3">integer</td>
+                  <td className="p-3">Pagination offset</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="font-medium">Example</h3>
+          <CodeBlock
+            title="Request"
+            code={`curl "https://api.bayanlab.com/v1/businesses?region=CO"`}
+          />
+          <CodeBlock
+            title="Response"
+            language="json"
+            code={`{
+  "version": "1.0",
+  "region": "CO",
+  "count": 5,
+  "total": 7,
+  "access_tier": "demo",
+  "items": [
     {
       "business_id": "123e4567-e89b-12d3-a456-426614174000",
-      "business_name": "Halal Mart",
-      "business_industry": "Grocery",
-      "business_city": "Denver",
-      "business_state": "CO",
+      "name": "Castle Design & Construction",
+      "category": "Construction & Home Services",
+      "address": {
+        "street": null,
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip_code": "80525"
+      },
+      "phone": null,
+      "website": null,
       "muslim_owned": true,
-      "status": "approved"
+      "updated_at": "2024-11-19T04:21:44Z"
     }
-  ],
-  "pagination": {
-    "total": 7,
-    "limit": 100,
-    "offset": 0,
-    "has_more": false
-  }
+  ]
 }`}
           />
         </div>
