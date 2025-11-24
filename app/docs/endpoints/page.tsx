@@ -30,7 +30,7 @@ export default function EndpointsPage() {
 
         <div className="space-y-4">
           <h3 className="font-medium">Parameters</h3>
-          <div className="rounded-lg border">
+          <div className="rounded-lg border overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-muted/50">
@@ -128,7 +128,7 @@ export default function EndpointsPage() {
 
         <div className="space-y-4">
           <h3 className="font-medium">Parameters</h3>
-          <div className="rounded-lg border">
+          <div className="rounded-lg border overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-muted/50">
@@ -219,7 +219,7 @@ export default function EndpointsPage() {
 
         <div className="space-y-4">
           <h3 className="font-medium">Parameters</h3>
-          <div className="rounded-lg border">
+          <div className="rounded-lg border overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-muted/50">

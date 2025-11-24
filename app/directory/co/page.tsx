@@ -81,7 +81,7 @@ export default async function ColoradoDirectoryPage() {
           <p className="text-sm text-muted-foreground">
             Showing {eateries.length} of {TOTALS.eateries} halal restaurants, cafes, and food trucks.
           </p>
-          <div className="rounded-lg border">
+          <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -127,7 +127,7 @@ export default async function ColoradoDirectoryPage() {
           <p className="text-sm text-muted-foreground">
             Showing {markets.length} of {TOTALS.markets} halal grocery stores, butchers, and meat shops.
           </p>
-          <div className="rounded-lg border">
+          <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -173,7 +173,7 @@ export default async function ColoradoDirectoryPage() {
           <p className="text-sm text-muted-foreground">
             Showing {businesses.length} of {TOTALS.businesses} verified Muslim-owned businesses.
           </p>
-          <div className="rounded-lg border">
+          <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>

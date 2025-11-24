@@ -23,7 +23,7 @@ export default function AttributesPage() {
           Fields returned by the <code className="rounded bg-muted px-1">/v1/halal-eateries</code> endpoint.
         </p>
 
-        <div className="rounded-lg border">
+        <div className="rounded-lg border overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/50">
@@ -206,7 +206,7 @@ export default function AttributesPage() {
           Fields returned by the <code className="rounded bg-muted px-1">/v1/halal-markets</code> endpoint.
         </p>
 
-        <div className="rounded-lg border">
+        <div className="rounded-lg border overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/50">
@@ -343,7 +343,7 @@ export default function AttributesPage() {
           Fields returned by the <code className="rounded bg-muted px-1">/v1/businesses</code> endpoint.
         </p>
 
-        <div className="rounded-lg border">
+        <div className="rounded-lg border overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/50">

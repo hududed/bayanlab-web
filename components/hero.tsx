@@ -12,11 +12,11 @@ export function Hero() {
           Ground-truth data on halal eateries, Muslim-owned businesses, and community events.
           Built for apps serving the Muslim community.
         </p>
-        <div className="flex gap-4 mt-4">
-          <Button size="lg" asChild>
+        <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
+          <Button size="lg" className="w-full sm:w-auto" asChild>
             <Link href="/directory/co">Explore Data</Link>
           </Button>
-          <Button size="lg" variant="outline" asChild>
+          <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
             <Link href="/docs">View API Docs</Link>
           </Button>
         </div>
