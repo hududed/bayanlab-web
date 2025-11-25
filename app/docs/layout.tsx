@@ -9,7 +9,7 @@ export default function DocsLayout({
     <div className="container py-12">
       <div className="flex gap-12">
         <DocsSidebar />
-        <main className="flex-1 min-w-0">{children}</main>
+        <main className="flex-1 min-w-0 w-full">{children}</main>
       </div>
     </div>
   );

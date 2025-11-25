@@ -32,7 +32,7 @@ export function DocsSidebar() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-64 shrink-0">
+    <nav className="hidden md:block w-64 shrink-0">
       <div className="sticky top-20 space-y-6">
         {navItems.map((section) => (
           <div key={section.href}>
