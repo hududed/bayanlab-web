@@ -191,7 +191,6 @@ export interface MasajidResponse {
 export interface MasjidParams {
   region?: string;
   city?: string;
-  denomination?: string;
   limit?: number;
   offset?: number;
 }

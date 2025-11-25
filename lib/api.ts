@@ -109,7 +109,6 @@ export async function fetchMasajid(params: MasjidParams = {}): Promise<MasajidRe
 
   if (params.region) searchParams.set('region', params.region);
   if (params.city) searchParams.set('city', params.city);
-  if (params.denomination) searchParams.set('denomination', params.denomination);
   if (params.limit) searchParams.set('limit', String(params.limit));
   if (params.offset) searchParams.set('offset', String(params.offset));
 

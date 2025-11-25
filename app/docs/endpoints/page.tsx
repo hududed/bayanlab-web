@@ -240,11 +240,6 @@ export default function EndpointsPage() {
                   <td className="p-3">Filter by city name</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-3"><code>denomination</code></td>
-                  <td className="p-3">string</td>
-                  <td className="p-3">Filter by denomination (e.g., &quot;Sunni&quot;, &quot;Shia&quot;)</td>
-                </tr>
-                <tr className="border-b">
                   <td className="p-3"><code>limit</code></td>
                   <td className="p-3">integer</td>
                   <td className="p-3">Max results (demo: 5, full: 500)</td>
@@ -284,7 +279,6 @@ export default function EndpointsPage() {
         "state": "CO",
         "zip_code": "80013"
       },
-      "denomination": "Sunni",
       "languages": "English;Arabic",
       "has_womens_section": true,
       "has_parking": true,

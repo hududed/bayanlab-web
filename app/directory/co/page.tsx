@@ -181,7 +181,6 @@ export default async function ColoradoDirectoryPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Name</TableHead>
-                  <TableHead>Denomination</TableHead>
                   <TableHead>City</TableHead>
                   <TableHead>Services</TableHead>
                 </TableRow>
@@ -191,7 +190,6 @@ export default async function ColoradoDirectoryPage() {
                   masajid.map((item) => (
                     <TableRow key={item.masjid_id}>
                       <TableCell className="font-medium">{item.name}</TableCell>
-                      <TableCell>{item.denomination || '—'}</TableCell>
                       <TableCell>{item.address.city}</TableCell>
                       <TableCell className="text-xs">
                         {[
@@ -204,7 +202,7 @@ export default async function ColoradoDirectoryPage() {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
+                    <TableCell colSpan={3} className="text-center text-muted-foreground py-8">
                       Unable to load sample data.
                     </TableCell>
                   </TableRow>
