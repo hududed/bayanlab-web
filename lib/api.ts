@@ -5,6 +5,8 @@ import {
   BusinessSyncResponse,
   BusinessParams,
   PublicBusinessesResponse,
+  MasajidResponse,
+  MasjidParams,
 } from './types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
@@ -97,6 +99,25 @@ export async function fetchPublicBusinesses(params: EateryParams = {}): Promise<
 
   if (!res.ok) {
     throw new Error(`Failed to fetch businesses: ${res.status}`);
+  }
+
+  return res.json();
+}
+
+export async function fetchMasajid(params: MasjidParams = {}): Promise<MasajidResponse> {
+  const searchParams = new URLSearchParams();
+
+  if (params.region) searchParams.set('region', params.region);
+  if (params.city) searchParams.set('city', params.city);
+  if (params.denomination) searchParams.set('denomination', params.denomination);
+  if (params.limit) searchParams.set('limit', String(params.limit));
+  if (params.offset) searchParams.set('offset', String(params.offset));
+
+  const url = `${API_BASE}/v1/masajid${searchParams.toString() ? `?${searchParams}` : ''}`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch masajid: ${res.status}`);
   }
 
   return res.json();

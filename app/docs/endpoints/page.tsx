@@ -207,6 +207,99 @@ export default function EndpointsPage() {
         </div>
       </section>
 
+      {/* Masajid */}
+      <section id="masajid" className="space-y-6 scroll-mt-20">
+        <div className="flex items-center gap-3">
+          <Badge>GET</Badge>
+          <h2 className="text-xl font-semibold">/v1/masajid</h2>
+        </div>
+        <p className="text-muted-foreground">
+          Returns mosques and Islamic centers for a given region.
+        </p>
+
+        <div className="space-y-4">
+          <h3 className="font-medium">Parameters</h3>
+          <div className="rounded-lg border overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b bg-muted/50">
+                  <th className="p-3 text-left font-medium">Name</th>
+                  <th className="p-3 text-left font-medium">Type</th>
+                  <th className="p-3 text-left font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b">
+                  <td className="p-3"><code>region</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">State code (default: &quot;CO&quot;)</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-3"><code>city</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">Filter by city name</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-3"><code>denomination</code></td>
+                  <td className="p-3">string</td>
+                  <td className="p-3">Filter by denomination (e.g., &quot;Sunni&quot;, &quot;Shia&quot;)</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="p-3"><code>limit</code></td>
+                  <td className="p-3">integer</td>
+                  <td className="p-3">Max results (demo: 5, full: 500)</td>
+                </tr>
+                <tr>
+                  <td className="p-3"><code>offset</code></td>
+                  <td className="p-3">integer</td>
+                  <td className="p-3">Pagination offset</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="font-medium">Example</h3>
+          <CodeBlock
+            title="Request"
+            code={`curl "https://api.bayanlab.com/v1/masajid?region=CO"`}
+          />
+          <CodeBlock
+            title="Response"
+            language="json"
+            code={`{
+  "version": "1.0",
+  "region": "CO",
+  "count": 5,
+  "total": 15,
+  "access_tier": "demo",
+  "items": [
+    {
+      "masjid_id": "701a1a4f-b33d-48f0-9fe7-3c2206081827",
+      "name": "Colorado Islamic Center (Masjid Al-Salaam)",
+      "address": {
+        "street": "14201 East Evans Drive",
+        "city": "Aurora",
+        "state": "CO",
+        "zip_code": "80013"
+      },
+      "denomination": "Sunni",
+      "languages": "English;Arabic",
+      "has_womens_section": true,
+      "has_parking": true,
+      "offers_jumah": true,
+      "offers_daily_prayers": true,
+      "offers_quran_classes": true,
+      "verification_status": "verified",
+      "updated_at": "2025-11-23T22:13:58Z"
+    }
+  ]
+}`}
+          />
+        </div>
+      </section>
+
       {/* Businesses */}
       <section id="businesses" className="space-y-6 scroll-mt-20">
         <div className="flex items-center gap-3">

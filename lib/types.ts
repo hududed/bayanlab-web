@@ -150,6 +150,52 @@ export interface BusinessParams {
   offset?: number;
 }
 
+// Masajid
+export interface Masjid {
+  masjid_id: string;
+  name: string;
+  address: {
+    street: string | null;
+    city: string;
+    state: string;
+    zip_code: string | null;
+  };
+  latitude: number | null;
+  longitude: number | null;
+  phone: string | null;
+  website: string | null;
+  email: string | null;
+  denomination: string | null;
+  languages: string | null;
+  has_womens_section: boolean;
+  has_parking: boolean;
+  has_wudu_facilities: boolean;
+  offers_jumah: boolean;
+  offers_daily_prayers: boolean;
+  offers_quran_classes: boolean;
+  offers_weekend_school: boolean;
+  verification_status: 'verified' | 'unverified';
+  source: string;
+  updated_at: string;
+}
+
+export interface MasajidResponse {
+  version: string;
+  region: string;
+  count: number;
+  total?: number;
+  access_tier?: string;
+  items: Masjid[];
+}
+
+export interface MasjidParams {
+  region?: string;
+  city?: string;
+  denomination?: string;
+  limit?: number;
+  offset?: number;
+}
+
 // Community Events
 export interface Event {
   event_id: string;

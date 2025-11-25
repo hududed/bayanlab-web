@@ -11,17 +11,18 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { fetchEateries, fetchMarkets, fetchPublicBusinesses } from '@/lib/api';
+import { fetchEateries, fetchMarkets, fetchPublicBusinesses, fetchMasajid } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: 'Colorado Directory | BayanLab',
-  description: 'Sample directory of halal eateries, markets, and Muslim-owned businesses in Colorado.',
+  description: 'Sample directory of halal eateries, markets, masajid, and Muslim-owned businesses in Colorado.',
 };
 
 // Static totals - demo endpoint only returns sample data
 const TOTALS = {
   eateries: 65,
   markets: 13,
+  masajid: 15,
   businesses: 7,
 };
 
@@ -40,16 +41,17 @@ function HalalStatusBadge({ status }: { status: string }) {
 }
 
 async function getData() {
-  const [eateries, markets, businesses] = await Promise.all([
+  const [eateries, markets, masajid, businesses] = await Promise.all([
     fetchEateries({ limit: 5 }).then(r => r.items).catch(() => []),
     fetchMarkets({ limit: 5 }).then(r => r.items).catch(() => []),
+    fetchMasajid({ limit: 5 }).then(r => r.items).catch(() => []),
     fetchPublicBusinesses({ limit: 5 }).then(r => r.items).catch(() => []),
   ]);
-  return { eateries, markets, businesses };
+  return { eateries, markets, masajid, businesses };
 }
 
 export default async function ColoradoDirectoryPage() {
-  const { eateries, markets, businesses } = await getData();
+  const { eateries, markets, masajid, businesses } = await getData();
 
   return (
     <div className="container py-12">
@@ -73,6 +75,7 @@ export default async function ColoradoDirectoryPage() {
         <TabsList>
           <TabsTrigger value="eateries">Eateries ({TOTALS.eateries})</TabsTrigger>
           <TabsTrigger value="markets">Markets ({TOTALS.markets})</TabsTrigger>
+          <TabsTrigger value="masajid">Masajid ({TOTALS.masajid})</TabsTrigger>
           <TabsTrigger value="businesses">Businesses ({TOTALS.businesses})</TabsTrigger>
         </TabsList>
 
@@ -165,6 +168,52 @@ export default async function ColoradoDirectoryPage() {
           </div>
           <p className="text-sm text-muted-foreground">
             + {TOTALS.markets - markets.length} more markets available with API access
+          </p>
+        </TabsContent>
+
+        {/* Masajid Tab */}
+        <TabsContent value="masajid" className="space-y-6">
+          <p className="text-sm text-muted-foreground">
+            Showing {masajid.length} of {TOTALS.masajid} mosques and prayer spaces.
+          </p>
+          <div className="rounded-lg border overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Name</TableHead>
+                  <TableHead>Denomination</TableHead>
+                  <TableHead>City</TableHead>
+                  <TableHead>Services</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {masajid.length > 0 ? (
+                  masajid.map((item) => (
+                    <TableRow key={item.masjid_id}>
+                      <TableCell className="font-medium">{item.name}</TableCell>
+                      <TableCell>{item.denomination || '—'}</TableCell>
+                      <TableCell>{item.address.city}</TableCell>
+                      <TableCell className="text-xs">
+                        {[
+                          item.offers_jumah && 'Jumah',
+                          item.offers_daily_prayers && 'Daily',
+                          item.offers_quran_classes && 'Quran',
+                        ].filter(Boolean).join(', ') || '—'}
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
+                      Unable to load sample data.
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            + {TOTALS.masajid - masajid.length} more masajid available with API access
           </p>
         </TabsContent>
 
