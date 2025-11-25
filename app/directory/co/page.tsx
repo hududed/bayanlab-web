@@ -63,20 +63,20 @@ export default async function ColoradoDirectoryPage() {
           <span>/</span>
           <span>Colorado</span>
         </div>
-        <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+        <h1 className="text-2xl font-bold tracking-tight md:text-4xl">
           Colorado Directory
         </h1>
-        <p className="mt-2 text-muted-foreground">
+        <p className="mt-2 text-sm md:text-base text-muted-foreground">
           Sample data from our Colorado dataset. Get API access for the full data.
         </p>
       </div>
 
       <Tabs defaultValue="eateries" className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="eateries">Eateries ({TOTALS.eateries})</TabsTrigger>
-          <TabsTrigger value="markets">Markets ({TOTALS.markets})</TabsTrigger>
-          <TabsTrigger value="masajid">Masajid ({TOTALS.masajid})</TabsTrigger>
-          <TabsTrigger value="businesses">Businesses ({TOTALS.businesses})</TabsTrigger>
+        <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 h-auto">
+          <TabsTrigger value="eateries" className="text-xs md:text-sm">Eateries ({TOTALS.eateries})</TabsTrigger>
+          <TabsTrigger value="markets" className="text-xs md:text-sm">Markets ({TOTALS.markets})</TabsTrigger>
+          <TabsTrigger value="masajid" className="text-xs md:text-sm">Masajid ({TOTALS.masajid})</TabsTrigger>
+          <TabsTrigger value="businesses" className="text-xs md:text-sm">Businesses ({TOTALS.businesses})</TabsTrigger>
         </TabsList>
 
         {/* Eateries Tab */}
@@ -256,11 +256,11 @@ export default async function ColoradoDirectoryPage() {
         </TabsContent>
       </Tabs>
 
-      <div className="mt-8 flex items-center justify-end gap-3">
-        <Button variant="outline" asChild>
+      <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
+        <Button variant="outline" className="w-full sm:w-auto" asChild>
           <Link href="/docs">View API Docs</Link>
         </Button>
-        <Button asChild>
+        <Button className="w-full sm:w-auto" asChild>
           <Link href="/contact">Get Full Access</Link>
         </Button>
       </div>
