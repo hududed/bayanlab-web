@@ -18,14 +18,6 @@ export const metadata: Metadata = {
   description: 'Sample directory of halal eateries, markets, masajid, and Muslim-owned businesses in Colorado.',
 };
 
-// Static totals - demo endpoint only returns sample data
-const TOTALS = {
-  eateries: 65,
-  markets: 13,
-  masajid: 15,
-  businesses: 7,
-};
-
 function HalalStatusBadge({ status }: { status: string }) {
   const variants: Record<string, 'default' | 'secondary' | 'outline'> = {
     validated: 'default',
@@ -81,9 +73,6 @@ export default async function ColoradoDirectoryPage() {
 
         {/* Eateries Tab */}
         <TabsContent value="eateries" className="space-y-6">
-          <p className="text-sm text-muted-foreground">
-            Showing {eateries.length} of {TOTALS.eateries} halal restaurants, cafes, and food trucks.
-          </p>
           <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
@@ -124,9 +113,6 @@ export default async function ColoradoDirectoryPage() {
 
         {/* Markets Tab */}
         <TabsContent value="markets" className="space-y-6">
-          <p className="text-sm text-muted-foreground">
-            Showing {markets.length} of {TOTALS.markets} halal grocery stores, butchers, and meat shops.
-          </p>
           <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
@@ -167,9 +153,6 @@ export default async function ColoradoDirectoryPage() {
 
         {/* Masajid Tab */}
         <TabsContent value="masajid" className="space-y-6">
-          <p className="text-sm text-muted-foreground">
-            Showing {masajid.length} of {TOTALS.masajid} mosques and prayer spaces.
-          </p>
           <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
@@ -208,9 +191,6 @@ export default async function ColoradoDirectoryPage() {
 
         {/* Businesses Tab */}
         <TabsContent value="businesses" className="space-y-6">
-          <p className="text-sm text-muted-foreground">
-            Showing {businesses.length} of {TOTALS.businesses} verified Muslim-owned businesses.
-          </p>
           <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
