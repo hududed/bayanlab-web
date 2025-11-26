@@ -152,7 +152,7 @@ export default function AttributesPage() {
                 <td className="p-3"><code>source</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">Yes</td>
-                <td className="p-3">Data source (colorado_halal, zabihah, osm)</td>
+                <td className="p-3">Data provenance identifier</td>
               </tr>
               <tr className="border-b">
                 <td className="p-3"><code>google_place_id</code></td>
@@ -323,7 +323,7 @@ export default function AttributesPage() {
                 <td className="p-3"><code>source</code></td>
                 <td className="p-3">string</td>
                 <td className="p-3">Yes</td>
-                <td className="p-3">Data source</td>
+                <td className="p-3">Data provenance identifier</td>
               </tr>
               <tr>
                 <td className="p-3"><code>updated_at</code></td>
