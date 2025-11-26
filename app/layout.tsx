@@ -27,6 +27,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          src="https://analytics.prowasl.com/script.js"
+          data-website-id="66d2e10a-5ba0-4408-8ee5-a6c75becea72"
+          data-exclude-hash="true"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
