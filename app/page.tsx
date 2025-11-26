@@ -1,14 +1,6 @@
 import { Hero } from '@/components/hero';
 import { DataProductCard } from '@/components/data-product-card';
 
-// Static counts - demo endpoint doesn't expose real totals
-const DATA_COUNTS = {
-  eateries: 65,
-  markets: 13,
-  masajid: 15,
-  businesses: 7,
-};
-
 export default async function HomePage() {
 
   return (
@@ -24,32 +16,24 @@ export default async function HomePage() {
           <DataProductCard
             title="Halal Eateries"
             description="Restaurants, cafes, and food trucks."
-            count={DATA_COUNTS.eateries}
-            countLabel="in Colorado"
             icon="🍽️"
             href="/directory/co"
           />
           <DataProductCard
             title="Halal Markets"
             description="Grocery stores, butchers, and halal meat shops."
-            count={DATA_COUNTS.markets}
-            countLabel="in Colorado"
             icon="🛒"
             href="/directory/co"
           />
           <DataProductCard
             title="Masajid"
             description="Mosques and Islamic centers."
-            count={DATA_COUNTS.masajid}
-            countLabel="in Colorado"
             icon="🕌"
             href="/directory/co"
           />
           <DataProductCard
             title="Muslim-Owned Businesses"
             description="Verified businesses from ProWasl directory."
-            count={DATA_COUNTS.businesses}
-            countLabel="in Colorado"
             icon="🏪"
             href="/directory/co"
           />

@@ -5,8 +5,6 @@ import { Badge } from '@/components/ui/badge';
 interface DataProductCardProps {
   title: string;
   description: string;
-  count?: number;
-  countLabel?: string;
   icon: string;
   href: string;
   comingSoon?: boolean;
@@ -15,8 +13,6 @@ interface DataProductCardProps {
 export function DataProductCard({
   title,
   description,
-  count,
-  countLabel,
   icon,
   href,
   comingSoon = false,
@@ -37,14 +33,7 @@ export function DataProductCard({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        {count !== undefined && countLabel ? (
-          <p className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">{count}</span> {countLabel}
-          </p>
-        ) : (
-          <p className="text-sm text-muted-foreground">{countLabel}</p>
-        )}
-        <p className="mt-4 text-sm font-medium text-primary">
+        <p className="text-sm font-medium text-primary">
           {comingSoon ? 'Learn more' : 'Explore'} &rarr;
         </p>
       </CardContent>
