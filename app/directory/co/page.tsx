@@ -73,10 +73,10 @@ export default async function ColoradoDirectoryPage() {
 
       <Tabs defaultValue="eateries" className="space-y-6">
         <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 h-auto">
-          <TabsTrigger value="eateries" className="text-xs md:text-sm">Eateries ({TOTALS.eateries})</TabsTrigger>
-          <TabsTrigger value="markets" className="text-xs md:text-sm">Markets ({TOTALS.markets})</TabsTrigger>
-          <TabsTrigger value="masajid" className="text-xs md:text-sm">Masajid ({TOTALS.masajid})</TabsTrigger>
-          <TabsTrigger value="businesses" className="text-xs md:text-sm">Businesses ({TOTALS.businesses})</TabsTrigger>
+          <TabsTrigger value="eateries" className="text-xs md:text-sm">Eateries</TabsTrigger>
+          <TabsTrigger value="markets" className="text-xs md:text-sm">Markets</TabsTrigger>
+          <TabsTrigger value="masajid" className="text-xs md:text-sm">Masajid</TabsTrigger>
+          <TabsTrigger value="businesses" className="text-xs md:text-sm">Businesses</TabsTrigger>
         </TabsList>
 
         {/* Eateries Tab */}
@@ -120,9 +120,6 @@ export default async function ColoradoDirectoryPage() {
               </TableBody>
             </Table>
           </div>
-          <p className="text-sm text-muted-foreground">
-            + {TOTALS.eateries - eateries.length} more eateries available with API access
-          </p>
         </TabsContent>
 
         {/* Markets Tab */}
@@ -166,9 +163,6 @@ export default async function ColoradoDirectoryPage() {
               </TableBody>
             </Table>
           </div>
-          <p className="text-sm text-muted-foreground">
-            + {TOTALS.markets - markets.length} more markets available with API access
-          </p>
         </TabsContent>
 
         {/* Masajid Tab */}
@@ -210,9 +204,6 @@ export default async function ColoradoDirectoryPage() {
               </TableBody>
             </Table>
           </div>
-          <p className="text-sm text-muted-foreground">
-            + {TOTALS.masajid - masajid.length} more masajid available with API access
-          </p>
         </TabsContent>
 
         {/* Businesses Tab */}
@@ -250,9 +241,6 @@ export default async function ColoradoDirectoryPage() {
               </TableBody>
             </Table>
           </div>
-          <p className="text-sm text-muted-foreground">
-            + {TOTALS.businesses - businesses.length} more businesses available with API access
-          </p>
         </TabsContent>
       </Tabs>
 

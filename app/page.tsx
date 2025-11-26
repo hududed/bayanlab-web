@@ -100,7 +100,6 @@ export default async function HomePage() {
           >
             <div className="flex items-center justify-between">
               <h3 className="font-semibold">Colorado</h3>
-              <span className="text-sm text-muted-foreground">100 listings</span>
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
               Eateries, markets, masajid, and businesses
