@@ -101,9 +101,18 @@ export interface PublicBusiness {
 
 export interface PublicBusinessesResponse {
   version: string;
-  region: string;
-  count: number;
+  total: number;
+  limit: number;
+  offset: number;
   items: PublicBusiness[];
+}
+
+export interface PublicBusinessParams {
+  state?: string;
+  city?: string;
+  category?: string;
+  limit?: number;
+  offset?: number;
 }
 
 // Muslim-Owned Businesses
@@ -220,4 +229,49 @@ export interface Event {
 export interface EventsResponse {
   events: Event[];
   count: number;
+}
+
+// Public API Types (no auth required)
+
+export interface StatsResponse {
+  version: string;
+  masajid_count: number;
+  eateries_count: number;
+  markets_count: number;
+  businesses_count: number;
+  total_listings: number;
+}
+
+export interface RegionCounts {
+  masajid: number;
+  eateries: number;
+  markets: number;
+  businesses: number;
+}
+
+export interface CoverageResponse {
+  version: string;
+  regions: string[];
+  counts_by_region: Record<string, RegionCounts>;
+}
+
+export interface PreviewSample {
+  name: string;
+  city: string;
+  state: string;
+  category: string;
+}
+
+export interface PreviewResponse {
+  version: string;
+  region: string;
+  total_in_region: number;
+  sample_size: number;
+  samples: {
+    masajid: PreviewSample[];
+    eateries: PreviewSample[];
+    markets: PreviewSample[];
+    businesses: PreviewSample[];
+  };
+  message: string;
 }

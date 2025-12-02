@@ -7,6 +7,7 @@ interface DataProductCardProps {
   description: string;
   icon: string;
   href: string;
+  count?: number;
   comingSoon?: boolean;
 }
 
@@ -15,6 +16,7 @@ export function DataProductCard({
   description,
   icon,
   href,
+  count,
   comingSoon = false,
 }: DataProductCardProps) {
   return (
@@ -33,6 +35,11 @@ export function DataProductCard({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
+        {count !== undefined && count > 0 && (
+          <p className="text-2xl font-bold mb-2">
+            {count.toLocaleString()}
+          </p>
+        )}
         <p className="text-sm font-medium text-primary">
           {comingSoon ? 'Learn more' : 'Explore'} &rarr;
         </p>

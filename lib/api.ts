@@ -5,11 +5,25 @@ import {
   BusinessSyncResponse,
   BusinessParams,
   PublicBusinessesResponse,
+  PublicBusinessParams,
   MasajidResponse,
   MasjidParams,
+  StatsResponse,
+  CoverageResponse,
+  PreviewResponse,
 } from './types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_KEY = process.env.BAYANLAB_API_KEY || '';
+
+// Helper to get auth headers
+function getAuthHeaders(): HeadersInit {
+  const headers: HeadersInit = {};
+  if (API_KEY) {
+    headers['X-API-Key'] = API_KEY;
+  }
+  return headers;
+}
 
 export async function fetchEateries(params: EateryParams = {}): Promise<HalalEateriesResponse> {
   const searchParams = new URLSearchParams();
@@ -23,18 +37,13 @@ export async function fetchEateries(params: EateryParams = {}): Promise<HalalEat
   if (params.favorites_only) searchParams.set('favorites_only', 'true');
 
   const url = `${API_BASE}/v1/halal-eateries${searchParams.toString() ? `?${searchParams}` : ''}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { headers: getAuthHeaders() });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch eateries: ${res.status}`);
   }
 
   return res.json();
-}
-
-export async function fetchEateriesCount(): Promise<number> {
-  const data = await fetchEateries({ limit: 1 });
-  return data.count;
 }
 
 export async function fetchBusinesses(params: BusinessParams = {}): Promise<BusinessSyncResponse> {
@@ -57,16 +66,6 @@ export async function fetchBusinesses(params: BusinessParams = {}): Promise<Busi
   return res.json();
 }
 
-export async function fetchBusinessesCount(): Promise<number> {
-  try {
-    const data = await fetchBusinesses({ limit: 1 });
-    return data.pagination.total;
-  } catch {
-    // Business endpoint requires auth, return fallback
-    return 6;
-  }
-}
-
 export async function fetchMarkets(params: EateryParams = {}): Promise<HalalMarketsResponse> {
   const searchParams = new URLSearchParams();
 
@@ -77,7 +76,7 @@ export async function fetchMarkets(params: EateryParams = {}): Promise<HalalMark
   if (params.offset) searchParams.set('offset', String(params.offset));
 
   const url = `${API_BASE}/v1/halal-markets${searchParams.toString() ? `?${searchParams}` : ''}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { headers: getAuthHeaders() });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch markets: ${res.status}`);
@@ -86,16 +85,17 @@ export async function fetchMarkets(params: EateryParams = {}): Promise<HalalMark
   return res.json();
 }
 
-export async function fetchPublicBusinesses(params: EateryParams = {}): Promise<PublicBusinessesResponse> {
+export async function fetchPublicBusinesses(params: PublicBusinessParams = {}): Promise<PublicBusinessesResponse> {
   const searchParams = new URLSearchParams();
 
-  if (params.region) searchParams.set('region', params.region);
+  if (params.state) searchParams.set('state', params.state);
   if (params.city) searchParams.set('city', params.city);
+  if (params.category) searchParams.set('category', params.category);
   if (params.limit) searchParams.set('limit', String(params.limit));
   if (params.offset) searchParams.set('offset', String(params.offset));
 
   const url = `${API_BASE}/v1/businesses${searchParams.toString() ? `?${searchParams}` : ''}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { headers: getAuthHeaders() });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch businesses: ${res.status}`);
@@ -113,10 +113,45 @@ export async function fetchMasajid(params: MasjidParams = {}): Promise<MasajidRe
   if (params.offset) searchParams.set('offset', String(params.offset));
 
   const url = `${API_BASE}/v1/masajid${searchParams.toString() ? `?${searchParams}` : ''}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { headers: getAuthHeaders() });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch masajid: ${res.status}`);
+  }
+
+  return res.json();
+}
+
+// Public API endpoints (no authentication required)
+
+export async function fetchStats(): Promise<StatsResponse> {
+  const url = `${API_BASE}/v1/stats`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch stats: ${res.status}`);
+  }
+
+  return res.json();
+}
+
+export async function fetchCoverage(): Promise<CoverageResponse> {
+  const url = `${API_BASE}/v1/coverage`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch coverage: ${res.status}`);
+  }
+
+  return res.json();
+}
+
+export async function fetchPreview(region: string): Promise<PreviewResponse> {
+  const url = `${API_BASE}/v1/preview?region=${encodeURIComponent(region)}`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch preview: ${res.status}`);
   }
 
   return res.json();

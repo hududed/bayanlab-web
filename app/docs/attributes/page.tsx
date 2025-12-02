@@ -336,6 +336,161 @@ export default function AttributesPage() {
         </div>
       </section>
 
+      {/* Masjid Attributes */}
+      <section id="masjid" className="space-y-6 scroll-mt-20">
+        <h2 className="text-xl font-semibold">Masjid (Mosque)</h2>
+        <p className="text-muted-foreground">
+          Fields returned by the <code className="rounded bg-muted px-1">/v1/masajid</code> endpoint.
+        </p>
+
+        <div className="rounded-lg border overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-3 text-left font-medium">Attribute</th>
+                <th className="p-3 text-left font-medium">Type</th>
+                <th className="p-3 text-left font-medium">Required</th>
+                <th className="p-3 text-left font-medium">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="p-3"><code>masjid_id</code></td>
+                <td className="p-3">UUID</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Unique identifier</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>name</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Masjid name</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.street</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Street address</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.city</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">City name</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.state</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">State code (e.g., &quot;CO&quot;)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>address.zip_code</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">ZIP code</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>latitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS latitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>longitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS longitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>phone</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Contact phone number</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>website</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Website URL</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>email</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Contact email</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>languages</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Languages spoken (semicolon-separated)</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>has_womens_section</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Has dedicated women&apos;s prayer area</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>has_parking</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Has parking available</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>has_wudu_facilities</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Has wudu (ablution) facilities</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>offers_jumah</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Offers Friday prayer</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>offers_daily_prayers</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Offers five daily prayers</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>offers_quran_classes</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Offers Quran classes</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>offers_weekend_school</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Has weekend Islamic school</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>verification_status</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">verified or unverified</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>source</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Data provenance identifier</td>
+              </tr>
+              <tr>
+                <td className="p-3"><code>updated_at</code></td>
+                <td className="p-3">ISO8601</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Last update timestamp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* Business Attributes */}
       <section id="business" className="space-y-6 scroll-mt-20">
         <h2 className="text-xl font-semibold">Muslim-Owned Business</h2>

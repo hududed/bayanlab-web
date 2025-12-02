@@ -13,9 +13,13 @@ const navItems = [
     title: 'Endpoints',
     href: '/docs/endpoints',
     items: [
+      { title: 'Stats (Public)', href: '/docs/endpoints#stats' },
+      { title: 'Coverage (Public)', href: '/docs/endpoints#coverage' },
+      { title: 'Preview (Public)', href: '/docs/endpoints#preview' },
       { title: 'Halal Eateries', href: '/docs/endpoints#halal-eateries' },
+      { title: 'Halal Markets', href: '/docs/endpoints#halal-markets' },
+      { title: 'Masajid', href: '/docs/endpoints#masajid' },
       { title: 'Businesses', href: '/docs/endpoints#businesses' },
-      { title: 'Events', href: '/docs/endpoints#events' },
     ],
   },
   {
@@ -23,6 +27,8 @@ const navItems = [
     href: '/docs/attributes',
     items: [
       { title: 'Eatery Fields', href: '/docs/attributes#eatery' },
+      { title: 'Market Fields', href: '/docs/attributes#market' },
+      { title: 'Masjid Fields', href: '/docs/attributes#masjid' },
       { title: 'Business Fields', href: '/docs/attributes#business' },
     ],
   },

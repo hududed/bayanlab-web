@@ -1,7 +1,10 @@
 import { Hero } from '@/components/hero';
 import { DataProductCard } from '@/components/data-product-card';
+import { fetchStats } from '@/lib/api';
 
 export default async function HomePage() {
+  // Fetch stats from public endpoint (no auth required)
+  const stats = await fetchStats().catch(() => null);
 
   return (
     <div className="flex flex-col">
@@ -17,25 +20,29 @@ export default async function HomePage() {
             title="Halal Eateries"
             description="Restaurants, cafes, and food trucks."
             icon="🍽️"
-            href="/directory/co"
+            href="/directory"
+            count={stats?.eateries_count ?? 0}
           />
           <DataProductCard
             title="Halal Markets"
             description="Grocery stores, butchers, and halal meat shops."
             icon="🛒"
-            href="/directory/co"
+            href="/directory"
+            count={stats?.markets_count ?? 0}
           />
           <DataProductCard
             title="Masajid"
             description="Mosques and Islamic centers."
             icon="🕌"
-            href="/directory/co"
+            href="/directory"
+            count={stats?.masajid_count ?? 0}
           />
           <DataProductCard
             title="Muslim-Owned Businesses"
-            description="Verified businesses from ProWasl directory."
+            description="Verified businesses directory."
             icon="🏪"
-            href="/directory/co"
+            href="/directory"
+            count={stats?.businesses_count ?? 0}
           />
         </div>
       </section>
@@ -79,23 +86,20 @@ export default async function HomePage() {
         </p>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <a
-            href="/directory/co"
+            href="/directory"
             className="group rounded-lg border p-6 transition-colors hover:bg-muted/50"
           >
             <div className="flex items-center justify-between">
-              <h3 className="font-semibold">Colorado</h3>
+              <h3 className="font-semibold">Nationwide Directory</h3>
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
-              Eateries, markets, masajid, and businesses
+              Browse by state, city, or category
             </p>
             <p className="mt-4 text-sm font-medium text-primary group-hover:underline">
-              View sample data →
+              Explore data →
             </p>
           </a>
         </div>
-        <p className="mt-8 text-sm text-muted-foreground">
-          More regions coming soon. <a href="/contact" className="text-primary hover:underline">Contact us</a> to request coverage.
-        </p>
       </section>
     </div>
   );

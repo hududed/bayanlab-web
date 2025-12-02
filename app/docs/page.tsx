@@ -57,27 +57,26 @@ export default function DocsPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Quick Example</h2>
         <p className="text-muted-foreground">
-          Fetch halal eateries in Colorado:
+          Fetch halal eateries in Texas:
         </p>
         <CodeBlock
           title="Request"
-          code={`curl "https://api.bayanlab.com/v1/halal-eateries?region=CO"`}
+          code={`curl "https://api.bayanlab.com/v1/halal-eateries?region=TX"`}
         />
         <CodeBlock
           title="Response"
           language="json"
           code={`{
   "version": "1.0",
-  "region": "CO",
-  "count": 65,
+  "region": "TX",
   "items": [
     {
       "eatery_id": "550e8400-e29b-41d4-a716-446655440000",
-      "name": "Syrian Jasmine",
-      "cuisine_style": "Syrian & Middle Eastern",
+      "name": "Halal Restaurant",
+      "cuisine_style": "Middle Eastern",
       "address": {
-        "city": "Aurora",
-        "state": "CO"
+        "city": "Houston",
+        "state": "TX"
       },
       "google_rating": 4.8,
       "halal_status": "validated"
