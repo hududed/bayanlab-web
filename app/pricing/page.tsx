@@ -115,7 +115,7 @@ export default async function PricingPage() {
           </CardContent>
           <CardFooter>
             <Button className="w-full" asChild>
-              <Link href="/contact">Get Started</Link>
+              <Link href="/checkout?tier=developer">Get Started</Link>
             </Button>
           </CardFooter>
         </Card>
@@ -159,7 +159,7 @@ export default async function PricingPage() {
           </CardContent>
           <CardFooter>
             <Button className="w-full" asChild>
-              <Link href="/contact">Get Started</Link>
+              <Link href="/checkout?tier=complete">Get Started</Link>
             </Button>
           </CardFooter>
         </Card>
