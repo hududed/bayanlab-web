@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Call BayanLab API to create the API key in the database
-      const bayanLabApiUrl = process.env.BAYANLAB_API_URL || 'https://claim.prowasl.com';
+      const bayanLabApiUrl = process.env.BAYANLAB_API_URL || 'https://api.bayanlab.com';
       const internalApiKey = process.env.BAYANLAB_INTERNAL_KEY;
 
       if (!internalApiKey) {
