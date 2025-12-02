@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe';
 import { sendPurchaseEmail } from '@/lib/email';
 import Stripe from 'stripe';
-import crypto from 'crypto';
 
 // Disable body parsing - we need raw body for webhook verification
 export const dynamic = 'force-dynamic';
@@ -55,20 +54,49 @@ export async function POST(request: NextRequest) {
         break;
       }
 
-      // TODO: Call BayanLab API to generate API key
-      // For now, generate a placeholder key locally
-      // In production, this would call:
-      // POST https://api.bayanlab.com/internal/api-keys
-      // {
-      //   email,
-      //   tier,
-      //   datasets,
-      //   stripe_session_id: session.id,
-      //   stripe_customer_id: session.customer,
-      // }
+      // Call BayanLab API to create the API key in the database
+      const bayanLabApiUrl = process.env.BAYANLAB_API_URL || 'https://claim.prowasl.com';
+      const internalApiKey = process.env.BAYANLAB_INTERNAL_KEY;
 
-      // Generate a temporary API key (replace with backend call in production)
-      const apiKey = `bl_${tier}_${crypto.randomBytes(24).toString('hex')}`;
+      if (!internalApiKey) {
+        console.error('BAYANLAB_INTERNAL_KEY not configured');
+        break;
+      }
+
+      let apiKey: string;
+      try {
+        const response = await fetch(`${bayanLabApiUrl}/v1/internal/api-keys`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Internal-Key': internalApiKey,
+          },
+          body: JSON.stringify({
+            email,
+            tier,
+            datasets,
+            stripe_customer_id: typeof session.customer === 'string' ? session.customer : null,
+            stripe_payment_id: session.payment_intent as string | null,
+          }),
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Failed to create API key:', response.status, errorText);
+          break;
+        }
+
+        const result = await response.json();
+        apiKey = result.api_key;
+        console.log('API key created successfully:', {
+          keyPrefix: result.key_prefix,
+          tier: result.tier,
+          datasets: result.datasets,
+        });
+      } catch (apiError) {
+        console.error('Error calling BayanLab API:', apiError);
+        break;
+      }
 
       console.log('Purchase completed - API key generated:', {
         email,
