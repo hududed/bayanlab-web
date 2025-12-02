@@ -56,10 +56,10 @@ export async function POST(request: NextRequest) {
 
       // Call BayanLab API to create the API key in the database
       const bayanLabApiUrl = process.env.BAYANLAB_API_URL || 'https://api.bayanlab.com';
-      const internalApiKey = process.env.BAYANLAB_INTERNAL_KEY;
+      const adminApiKey = process.env.BAYANLAB_ADMIN_KEY;
 
-      if (!internalApiKey) {
-        console.error('BAYANLAB_INTERNAL_KEY not configured');
+      if (!adminApiKey) {
+        console.error('BAYANLAB_ADMIN_KEY not configured');
         break;
       }
 
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-Internal-Key': internalApiKey,
+            'X-Admin-Key': adminApiKey,
           },
           body: JSON.stringify({
             email,
