@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -19,6 +20,8 @@ export function DataProductCard({
   count,
   comingSoon = false,
 }: DataProductCardProps) {
+  const isImagePath = icon.startsWith('/');
+
   return (
     <Card className="relative overflow-hidden transition-colors hover:bg-muted/50">
       <Link href={href} className="absolute inset-0 z-10">
@@ -26,7 +29,11 @@ export function DataProductCard({
       </Link>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <span className="text-4xl">{icon}</span>
+          {isImagePath ? (
+            <Image src={icon} alt="" width={56} height={56} className="h-14 w-14" />
+          ) : (
+            <span className="text-4xl">{icon}</span>
+          )}
           {comingSoon && (
             <Badge variant="secondary">Coming Soon</Badge>
           )}

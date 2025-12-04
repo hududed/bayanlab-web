@@ -19,28 +19,28 @@ export default async function HomePage() {
           <DataProductCard
             title="Halal Eateries"
             description="Restaurants, cafes, and food trucks."
-            icon="🍽️"
+            icon="/eateries_icon.svg"
             href="/directory"
             count={stats?.eateries_count ?? 0}
           />
           <DataProductCard
             title="Halal Markets"
             description="Grocery stores, butchers, and halal meat shops."
-            icon="🛒"
+            icon="/markets_icon.svg"
             href="/directory"
             count={stats?.markets_count ?? 0}
           />
           <DataProductCard
             title="Masajid"
             description="Mosques and Islamic centers."
-            icon="🕌"
+            icon="/masajid_icon.svg"
             href="/directory"
             count={stats?.masajid_count ?? 0}
           />
           <DataProductCard
             title="Muslim-Owned Businesses"
             description="Verified businesses directory."
-            icon="🏪"
+            icon="/businesses_icon.svg"
             href="/directory"
             count={stats?.businesses_count ?? 0}
           />

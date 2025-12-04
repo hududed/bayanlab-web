@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { fetchStats, fetchCoverage } from '@/lib/api';
@@ -64,7 +65,7 @@ export default async function DirectoryPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="pb-2">
-              <div className="text-3xl mb-2">🍽️</div>
+              <Image src="/eateries_icon.svg" alt="" width={56} height={56} className="h-14 w-14 mb-2" />
               <CardTitle className="text-lg">Halal Eateries</CardTitle>
               <CardDescription>Restaurants, cafes, food trucks</CardDescription>
             </CardHeader>
@@ -75,7 +76,7 @@ export default async function DirectoryPage() {
 
           <Card>
             <CardHeader className="pb-2">
-              <div className="text-3xl mb-2">🛒</div>
+              <Image src="/markets_icon.svg" alt="" width={56} height={56} className="h-14 w-14 mb-2" />
               <CardTitle className="text-lg">Halal Markets</CardTitle>
               <CardDescription>Grocery stores, butchers</CardDescription>
             </CardHeader>
@@ -86,7 +87,7 @@ export default async function DirectoryPage() {
 
           <Card>
             <CardHeader className="pb-2">
-              <div className="text-3xl mb-2">🕌</div>
+              <Image src="/masajid_icon.svg" alt="" width={56} height={56} className="h-14 w-14 mb-2" />
               <CardTitle className="text-lg">Masajid</CardTitle>
               <CardDescription>Mosques, Islamic centers</CardDescription>
             </CardHeader>
@@ -97,7 +98,7 @@ export default async function DirectoryPage() {
 
           <Card>
             <CardHeader className="pb-2">
-              <div className="text-3xl mb-2">🏪</div>
+              <Image src="/businesses_icon.svg" alt="" width={56} height={56} className="h-14 w-14 mb-2" />
               <CardTitle className="text-lg">Businesses</CardTitle>
               <CardDescription>Muslim-owned businesses</CardDescription>
             </CardHeader>
