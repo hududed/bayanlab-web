@@ -15,6 +15,10 @@ const config: Config = {
   			"2xl": "1400px",
   		},
   	},
+  	fontFamily: {
+  		sans: ["din-2014", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+  		mono: ["var(--font-geist-mono)", "monospace"],
+  	},
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',

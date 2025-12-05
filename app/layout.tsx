@@ -4,11 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -28,6 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Adobe Fonts - DIN 2014 */}
+        <link rel="stylesheet" href="https://use.typekit.net/zql0eih.css" />
         <script
           defer
           src="https://analytics.prowasl.com/script.js"
@@ -36,7 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Header />
         <main className="flex-1">{children}</main>
