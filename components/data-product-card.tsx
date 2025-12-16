@@ -39,7 +39,7 @@ export function DataProductCard({
           )}
         </div>
         <CardTitle className="mt-4">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription className="min-h-[2.5rem]">{description}</CardDescription>
       </CardHeader>
       <CardContent>
         {count !== undefined && count > 0 && (
