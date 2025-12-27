@@ -48,10 +48,11 @@ export default function EndpointsPage() {
               code={`{
   "version": "1.0",
   "masajid_count": 2626,
-  "eateries_count": 949,
-  "markets_count": 211,
-  "businesses_count": 31,
-  "total_listings": 3817
+  "eateries_count": 2328,
+  "markets_count": 225,
+  "businesses_count": 1989,
+  "events_count": 10647,
+  "total_listings": 7168
 }`}
             />
           </div>
@@ -533,19 +534,96 @@ export default function EndpointsPage() {
           <div className="flex items-center gap-3">
             <Badge>GET</Badge>
             <h3 className="text-xl font-semibold">/v1/events</h3>
-            <Badge variant="outline">Coming Soon</Badge>
+            <Badge variant="destructive">API Key Required</Badge>
           </div>
           <p className="text-muted-foreground">
             Community events from masjid calendars and Islamic organizations.
           </p>
-          <div className="rounded-lg border border-dashed p-6 text-center text-muted-foreground">
-            <p>This endpoint is under development.</p>
-            <p className="mt-1 text-sm">
-              <Link href="/contact" className="text-primary hover:underline">
-                Contact us
-              </Link>{' '}
-              if you&apos;re interested in events data.
-            </p>
+
+          <div className="space-y-4">
+            <h4 className="font-medium">Parameters</h4>
+            <div className="rounded-lg border overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b bg-muted/50">
+                    <th className="p-3 text-left font-medium">Name</th>
+                    <th className="p-3 text-left font-medium">Type</th>
+                    <th className="p-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b">
+                    <td className="p-3"><code>region</code></td>
+                    <td className="p-3">string</td>
+                    <td className="p-3">State code (default: &quot;CO&quot;)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-3"><code>city</code></td>
+                    <td className="p-3">string</td>
+                    <td className="p-3">Filter by city name</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-3"><code>updated_since</code></td>
+                    <td className="p-3">string</td>
+                    <td className="p-3">ISO8601 datetime to filter events updated after</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-3"><code>limit</code></td>
+                    <td className="p-3">integer</td>
+                    <td className="p-3">Max results (default: 100, max: 1000)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3"><code>offset</code></td>
+                    <td className="p-3">integer</td>
+                    <td className="p-3">Pagination offset</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="font-medium">Example</h4>
+            <CodeBlock
+              title="Request"
+              code={`curl "https://api.bayanlab.com/v1/events?region=IL&limit=10"`}
+            />
+            <CodeBlock
+              title="Response"
+              language="json"
+              code={`{
+  "version": "1.0",
+  "region": "IL",
+  "items": [
+    {
+      "event_id": "001a7953-4766-4f75-8c36-5828f57b81e0",
+      "title": "Monthly Family Event",
+      "description": null,
+      "start_time": "2025-01-18T18:15:00.000Z",
+      "end_time": "2025-01-18T23:15:00.000Z",
+      "all_day": false,
+      "venue": {
+        "name": "Islamic Center of Naperville",
+        "address": {
+          "street": "2844 W Ogden Ave",
+          "city": "Naperville",
+          "state": "IL",
+          "zip": "60540"
+        },
+        "latitude": 41.7539,
+        "longitude": -88.20183
+      },
+      "organizer": {
+        "name": null,
+        "contact": null
+      },
+      "source": "masjid_calendar",
+      "region": "IL",
+      "updated_at": "2025-12-27T17:32:24.874Z"
+    }
+  ]
+}`}
+            />
           </div>
         </section>
       </section>

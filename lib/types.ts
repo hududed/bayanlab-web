@@ -239,6 +239,7 @@ export interface StatsResponse {
   eateries_count: number;
   markets_count: number;
   businesses_count: number;
+  events_count: number;
   total_listings: number;
 }
 
@@ -247,6 +248,7 @@ export interface RegionCounts {
   eateries: number;
   markets: number;
   businesses: number;
+  events: number;
 }
 
 export interface CoverageResponse {
@@ -272,6 +274,7 @@ export interface PreviewResponse {
     eateries: PreviewSample[];
     markets: PreviewSample[];
     businesses: PreviewSample[];
+    events: PreviewSample[];
   };
   message: string;
 }

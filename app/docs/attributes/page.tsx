@@ -604,6 +604,149 @@ export default function AttributesPage() {
         </div>
       </section>
 
+      {/* Event Attributes */}
+      <section id="event" className="space-y-6 scroll-mt-20">
+        <h2 className="text-xl font-semibold">Community Event</h2>
+        <p className="text-muted-foreground">
+          Fields returned by the <code className="rounded bg-muted px-1">/v1/events</code> endpoint.
+        </p>
+
+        <div className="rounded-lg border overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b bg-muted/50">
+                <th className="p-3 text-left font-medium">Attribute</th>
+                <th className="p-3 text-left font-medium">Type</th>
+                <th className="p-3 text-left font-medium">Required</th>
+                <th className="p-3 text-left font-medium">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="p-3"><code>event_id</code></td>
+                <td className="p-3">UUID</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Unique identifier</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>title</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Event title</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>description</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Event description</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>start_time</code></td>
+                <td className="p-3">ISO8601</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Event start date/time</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>end_time</code></td>
+                <td className="p-3">ISO8601</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Event end date/time</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>all_day</code></td>
+                <td className="p-3">boolean</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">All-day event flag</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>venue.name</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Venue name</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>venue.address.street</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Street address</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>venue.address.city</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">City name</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>venue.address.state</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">State code</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>venue.address.zip</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">ZIP code</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>venue.latitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS latitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>venue.longitude</code></td>
+                <td className="p-3">decimal</td>
+                <td className="p-3">No</td>
+                <td className="p-3">GPS longitude</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>url</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Event URL or registration link</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>organizer.name</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Organizer name</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>organizer.contact</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">Organizer contact info</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>source</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Data provenance identifier</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>source_ref</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">No</td>
+                <td className="p-3">External reference ID</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3"><code>region</code></td>
+                <td className="p-3">string</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">State code (e.g., &quot;CO&quot;)</td>
+              </tr>
+              <tr>
+                <td className="p-3"><code>updated_at</code></td>
+                <td className="p-3">ISO8601</td>
+                <td className="p-3">Yes</td>
+                <td className="p-3">Last update timestamp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* Navigation */}
       <div className="flex justify-between border-t pt-8">
         <Link href="/docs/endpoints" className="text-sm text-muted-foreground hover:text-foreground">

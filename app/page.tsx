@@ -15,7 +15,7 @@ export default async function HomePage() {
         <h2 className="mb-8 text-2xl font-bold tracking-tight md:text-3xl">
           Data Products
         </h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
           <DataProductCard
             title="Halal Eateries"
             description="Restaurants, cafes, and food trucks."
@@ -43,6 +43,13 @@ export default async function HomePage() {
             icon="/businesses_icon.svg"
             href="/directory"
             count={stats?.businesses_count ?? 0}
+          />
+          <DataProductCard
+            title="Community Events"
+            description="Masjid events and community gatherings."
+            icon="/calendar_icon.svg"
+            href="/directory"
+            count={stats?.events_count ?? 0}
           />
         </div>
       </section>

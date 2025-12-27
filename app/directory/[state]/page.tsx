@@ -64,8 +64,9 @@ export default async function StateDirectoryPage({ params }: PageProps) {
     eateries: 0,
     markets: 0,
     businesses: 0,
+    events: 0,
   };
-  const totalCount = counts.masajid + counts.eateries + counts.markets + counts.businesses;
+  const totalCount = counts.masajid + counts.eateries + counts.markets + counts.businesses + counts.events;
 
   // Preview samples
   const samples = preview?.samples ?? {
@@ -73,6 +74,7 @@ export default async function StateDirectoryPage({ params }: PageProps) {
     eateries: [],
     markets: [],
     businesses: [],
+    events: [],
   };
 
   return (
@@ -94,7 +96,7 @@ export default async function StateDirectoryPage({ params }: PageProps) {
       </div>
 
       <Tabs defaultValue="masajid" className="space-y-6">
-        <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 h-auto">
+        <TabsList className="w-full grid grid-cols-3 md:grid-cols-5 h-auto">
           <TabsTrigger value="masajid" className="text-xs md:text-sm">
             Masajid ({counts.masajid.toLocaleString()})
           </TabsTrigger>
@@ -106,6 +108,9 @@ export default async function StateDirectoryPage({ params }: PageProps) {
           </TabsTrigger>
           <TabsTrigger value="businesses" className="text-xs md:text-sm">
             Businesses ({counts.businesses.toLocaleString()})
+          </TabsTrigger>
+          <TabsTrigger value="events" className="text-xs md:text-sm">
+            Events ({counts.events.toLocaleString()})
           </TabsTrigger>
         </TabsList>
 
@@ -245,6 +250,41 @@ export default async function StateDirectoryPage({ params }: PageProps) {
           {samples.businesses.length > 0 && counts.businesses > samples.businesses.length && (
             <p className="text-sm text-muted-foreground text-center">
               Showing {samples.businesses.length} of {counts.businesses.toLocaleString()} businesses
+            </p>
+          )}
+        </TabsContent>
+
+        {/* Events Tab */}
+        <TabsContent value="events" className="space-y-6">
+          <div className="rounded-lg border overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Event</TableHead>
+                  <TableHead>City</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {samples.events.length > 0 ? (
+                  samples.events.map((item, idx) => (
+                    <TableRow key={idx}>
+                      <TableCell className="font-medium">{item.name}</TableCell>
+                      <TableCell>{item.city}</TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={2} className="text-center text-muted-foreground py-8">
+                      No upcoming events found in {stateName}.
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+          {samples.events.length > 0 && counts.events > samples.events.length && (
+            <p className="text-sm text-muted-foreground text-center">
+              Showing {samples.events.length} of {counts.events.toLocaleString()} upcoming events
             </p>
           )}
         </TabsContent>

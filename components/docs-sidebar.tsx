@@ -20,6 +20,7 @@ const navItems = [
       { title: 'Halal Markets', href: '/docs/endpoints#halal-markets' },
       { title: 'Masajid', href: '/docs/endpoints#masajid' },
       { title: 'Businesses', href: '/docs/endpoints#businesses' },
+      { title: 'Events', href: '/docs/endpoints#events' },
     ],
   },
   {
@@ -30,6 +31,7 @@ const navItems = [
       { title: 'Market Fields', href: '/docs/attributes#market' },
       { title: 'Masjid Fields', href: '/docs/attributes#masjid' },
       { title: 'Business Fields', href: '/docs/attributes#business' },
+      { title: 'Event Fields', href: '/docs/attributes#event' },
     ],
   },
 ];

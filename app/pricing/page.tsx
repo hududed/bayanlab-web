@@ -24,6 +24,7 @@ export default async function PricingPage() {
     { name: 'Halal Eateries', count: stats?.eateries_count ?? 950, description: 'Restaurants, cafes, food trucks' },
     { name: 'Halal Markets', count: stats?.markets_count ?? 210, description: 'Grocery stores, butchers' },
     { name: 'Businesses', count: stats?.businesses_count ?? 30, description: 'Muslim-owned businesses' },
+    { name: 'Events', count: stats?.events_count ?? 10000, description: 'Community events and gatherings' },
   ];
 
   return (
@@ -137,7 +138,7 @@ export default async function PricingPage() {
             <ul className="space-y-3 text-sm">
               <li className="flex gap-2">
                 {checkIcon}
-                <span><strong>All 4 datasets</strong> included</span>
+                <span><strong>All 5 datasets</strong> included</span>
               </li>
               <li className="flex gap-2">
                 {checkIcon}
@@ -168,7 +169,7 @@ export default async function PricingPage() {
       {/* Available Datasets */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold mb-6 text-center">Available Datasets</h2>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 max-w-4xl mx-auto">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 max-w-5xl mx-auto">
           {datasets.map((dataset) => (
             <Card key={dataset.name}>
               <CardHeader className="pb-2">

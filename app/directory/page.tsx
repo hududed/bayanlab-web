@@ -62,7 +62,7 @@ export default async function DirectoryPage() {
       {/* Data Categories */}
       <section className="mb-16">
         <h2 className="text-xl font-semibold mb-6">Browse by Category</h2>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
           <Card>
             <CardHeader className="pb-2">
               <Image src="/eateries_icon.svg" alt="" width={56} height={56} className="h-14 w-14 mb-2" />
@@ -104,6 +104,17 @@ export default async function DirectoryPage() {
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold">{(stats?.businesses_count ?? 0).toLocaleString()}</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2">
+              <Image src="/calendar_icon.svg" alt="" width={56} height={56} className="h-14 w-14 mb-2" />
+              <CardTitle className="text-lg">Events</CardTitle>
+              <CardDescription>Masjid events, gatherings</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">{(stats?.events_count ?? 0).toLocaleString()}</p>
             </CardContent>
           </Card>
         </div>
