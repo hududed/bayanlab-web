@@ -28,6 +28,8 @@ const STATE_NAMES: Record<string, string> = {
   DC: 'District of Columbia',
 };
 
+export const dynamic = 'force-dynamic';
+
 interface PageProps {
   params: Promise<{ state: string }>;
 }

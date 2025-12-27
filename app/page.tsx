@@ -2,6 +2,8 @@ import { Hero } from '@/components/hero';
 import { DataProductCard } from '@/components/data-product-card';
 import { fetchStats } from '@/lib/api';
 
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
   // Fetch stats from public endpoint (no auth required)
   const stats = await fetchStats().catch(() => null);

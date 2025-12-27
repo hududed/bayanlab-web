@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: 'Browse halal eateries, markets, masajid, and Muslim-owned businesses across the United States.',
 };
 
+export const dynamic = 'force-dynamic';
+
 // State code to full name mapping
 const STATE_NAMES: Record<string, string> = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
