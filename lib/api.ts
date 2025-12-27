@@ -126,7 +126,7 @@ export async function fetchMasajid(params: MasjidParams = {}): Promise<MasajidRe
 
 export async function fetchStats(): Promise<StatsResponse> {
   const url = `${API_BASE}/v1/stats`;
-  const res = await fetch(url, { next: { revalidate: 3600 } }); // Refresh every hour
+  const res = await fetch(url, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch stats: ${res.status}`);
