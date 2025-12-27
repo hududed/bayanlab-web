@@ -137,7 +137,7 @@ export async function fetchStats(): Promise<StatsResponse> {
 
 export async function fetchCoverage(): Promise<CoverageResponse> {
   const url = `${API_BASE}/v1/coverage`;
-  const res = await fetch(url, { next: { revalidate: 3600 } }); // Refresh every hour
+  const res = await fetch(url, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch coverage: ${res.status}`);
@@ -148,7 +148,7 @@ export async function fetchCoverage(): Promise<CoverageResponse> {
 
 export async function fetchPreview(region: string): Promise<PreviewResponse> {
   const url = `${API_BASE}/v1/preview?region=${encodeURIComponent(region)}`;
-  const res = await fetch(url, { next: { revalidate: 3600 } }); // Refresh every hour
+  const res = await fetch(url, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch preview: ${res.status}`);
