@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   description: 'Browse halal eateries, markets, masajid, and Muslim-owned businesses across the United States.',
 };
 
-export const dynamic = 'force-dynamic';
+// Revalidate every 5 minutes (ISR)
+export const revalidate = 300;
 
 // State code to full name mapping
 const STATE_NAMES: Record<string, string> = {

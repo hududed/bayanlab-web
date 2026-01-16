@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   description: 'One-time data licenses for halal eateries, markets, masajid, and Muslim-owned business data.',
 };
 
-export const dynamic = 'force-dynamic';
+// Revalidate every 5 minutes (ISR)
+export const revalidate = 300;
 
 const checkIcon = (
   <svg className="h-4 w-4 text-primary shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

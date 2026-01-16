@@ -126,7 +126,8 @@ export async function fetchMasajid(params: MasjidParams = {}): Promise<MasajidRe
 
 export async function fetchStats(): Promise<StatsResponse> {
   const url = `${API_BASE}/v1/stats`;
-  const res = await fetch(url, { cache: 'no-store' });
+  // Cache for 5 minutes to reduce API calls
+  const res = await fetch(url, { next: { revalidate: 300 } });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch stats: ${res.status}`);
@@ -137,7 +138,8 @@ export async function fetchStats(): Promise<StatsResponse> {
 
 export async function fetchCoverage(): Promise<CoverageResponse> {
   const url = `${API_BASE}/v1/coverage`;
-  const res = await fetch(url, { cache: 'no-store' });
+  // Cache for 5 minutes to reduce API calls
+  const res = await fetch(url, { next: { revalidate: 300 } });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch coverage: ${res.status}`);
@@ -148,7 +150,8 @@ export async function fetchCoverage(): Promise<CoverageResponse> {
 
 export async function fetchPreview(region: string): Promise<PreviewResponse> {
   const url = `${API_BASE}/v1/preview?region=${encodeURIComponent(region)}`;
-  const res = await fetch(url, { cache: 'no-store' });
+  // Cache for 5 minutes to reduce API calls
+  const res = await fetch(url, { next: { revalidate: 300 } });
 
   if (!res.ok) {
     throw new Error(`Failed to fetch preview: ${res.status}`);

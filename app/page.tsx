@@ -2,7 +2,8 @@ import { Hero } from '@/components/hero';
 import { DataProductCard } from '@/components/data-product-card';
 import { fetchStats } from '@/lib/api';
 
-export const dynamic = 'force-dynamic';
+// Revalidate every 5 minutes (ISR)
+export const revalidate = 300;
 
 export default async function HomePage() {
   // Fetch stats from public endpoint (no auth required)

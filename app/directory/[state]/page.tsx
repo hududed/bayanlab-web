@@ -28,7 +28,8 @@ const STATE_NAMES: Record<string, string> = {
   DC: 'District of Columbia',
 };
 
-export const dynamic = 'force-dynamic';
+// Revalidate every 5 minutes (ISR)
+export const revalidate = 300;
 
 interface PageProps {
   params: Promise<{ state: string }>;
