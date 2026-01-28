@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     // Determine datasets for this purchase
     const datasets: DatasetId[] = tier === 'complete'
-      ? ['masajid', 'eateries', 'markets', 'businesses']
+      ? ['masajid', 'eateries', 'markets', 'businesses', 'events']
       : [dataset as DatasetId];
 
     const tierInfo = TIERS[tier];
@@ -59,8 +59,8 @@ export async function POST(request: NextRequest) {
         datasets: datasets.join(','),
       },
       customer_email: email || undefined,
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/checkout/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://bayanlab.com'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://bayanlab.com'}/checkout/cancel`,
       // Require billing address for fraud prevention
       billing_address_collection: 'required',
       // Add custom text about no refunds

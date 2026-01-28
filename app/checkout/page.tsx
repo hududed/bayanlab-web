@@ -12,11 +12,12 @@ const DATASETS = [
   { id: 'eateries', name: 'Halal Eateries', description: 'Restaurants, cafes, food trucks' },
   { id: 'markets', name: 'Halal Markets', description: 'Grocery stores, butchers' },
   { id: 'businesses', name: 'Businesses', description: 'Muslim-owned businesses' },
+  { id: 'events', name: 'Masjid Events', description: 'Community calendar events' },
 ];
 
 const TIERS = {
   developer: { name: 'Developer', price: '$99', datasetCount: 1 },
-  complete: { name: 'Complete', price: '$249', datasetCount: 4 },
+  complete: { name: 'Complete', price: '$249', datasetCount: 5 },
 };
 
 function CheckoutForm() {

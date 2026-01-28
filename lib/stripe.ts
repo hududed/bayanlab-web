@@ -42,6 +42,12 @@ export const DATASETS = {
     description: 'Muslim-owned businesses',
     endpoint: '/v1/businesses',
   },
+  events: {
+    id: 'events',
+    name: 'Masjid Events',
+    description: 'Community calendar events',
+    endpoint: '/v1/events',
+  },
 } as const;
 
 export type DatasetId = keyof typeof DATASETS;
@@ -60,7 +66,7 @@ export const TIERS = {
     name: 'Complete',
     price: 24900, // cents
     priceDisplay: '$249',
-    datasetCount: 4,
+    datasetCount: 5,
   },
 } as const;
 
