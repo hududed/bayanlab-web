@@ -27,8 +27,17 @@ interface PurchaseEmailParams {
 export async function sendPurchaseEmail({ to, tier, datasets, apiKey }: PurchaseEmailParams) {
   initSendGrid();
 
-  const datasetList = datasets.join(', ');
   const tierDisplay = tier === 'complete' ? 'Complete' : 'Developer';
+
+  // Format datasets nicely for display
+  const datasetNames: Record<string, string> = {
+    masajid: 'Masajid (Mosques)',
+    eateries: 'Halal Eateries',
+    markets: 'Halal Markets',
+    businesses: 'Muslim-Owned Businesses',
+    events: 'Masjid Events',
+  };
+  const datasetListHtml = datasets.map(d => `<li>${datasetNames[d] || d}</li>`).join('');
 
   const msg = {
     to,
@@ -41,10 +50,11 @@ Your BayanLab ${tierDisplay} License is now active.
 
 API Key: ${apiKey}
 
-Datasets included: ${datasetList}
+Datasets included:
+${datasets.map(d => `  - ${datasetNames[d] || d}`).join('\n')}
 
 Quick Start:
-curl -H "Authorization: Bearer ${apiKey}" \\
+curl -H "X-API-Key: ${apiKey}" \\
   https://api.bayanlab.com/v1/masajid
 
 Documentation: https://bayanlab.com/docs
@@ -66,6 +76,7 @@ Questions? Reply to this email or visit https://bayanlab.com/contact
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <div style="text-align: center; margin-bottom: 30px;">
     <h1 style="color: #000; margin: 0;">BayanLab</h1>
+    <p style="color: #666; margin: 5px 0 0 0;">Trusted Halal & Muslim Community Data</p>
   </div>
 
   <p>Thank you for your purchase!</p>
@@ -77,10 +88,15 @@ Questions? Reply to this email or visit https://bayanlab.com/contact
     <code style="display: block; background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 12px; font-size: 14px; word-break: break-all;">${apiKey}</code>
   </div>
 
-  <p><strong>Datasets included:</strong> ${datasetList}</p>
+  <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 15px; margin: 20px 0;">
+    <p style="margin: 0 0 10px 0; font-weight: 600; color: #166534;">Datasets Included</p>
+    <ul style="margin: 0; padding-left: 20px; color: #15803d;">
+      ${datasetListHtml}
+    </ul>
+  </div>
 
   <h3 style="margin-top: 30px;">Quick Start</h3>
-  <pre style="background: #1a1a1a; color: #fff; border-radius: 8px; padding: 15px; overflow-x: auto; font-size: 13px;">curl -H "Authorization: Bearer ${apiKey}" \\
+  <pre style="background: #1a1a1a; color: #fff; border-radius: 8px; padding: 15px; overflow-x: auto; font-size: 13px;">curl -H "X-API-Key: ${apiKey}" \\
   https://api.bayanlab.com/v1/masajid</pre>
 
   <p style="margin-top: 30px;">
